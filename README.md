@@ -1,34 +1,29 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This is a [Next.js](https://nextjs.org/) project bootstrapped with 
+[`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app)
+with backend server written with [larking.io](https://larking.io) go libraries.
+
+It demo's the gRPC-web intergration with typescrupt support. Libraries use:
+- [ts-proto](https://github.com/stephenh/ts-proto) - library for generating protobuffers.
+- [@improbable-eng/grpc-web](https://www.npmjs.com/package/@improbable-eng/grpc-web) - client library for gRPC-Web transport.
+- [swr](https://www.npmjs.com/package/swr) - hooks library for data fetching.
 
 ## Getting Started
 
+Please see docs, or get in touch for support and feedback!
 First, run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Then, run the backend server:
+```bash
+go run ./cmd/tutorial
+```
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+### Build
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Generate protobuffers:
+```
+protoc --go_out=paths=source_relative:. --go-grpc_out=paths=source_relative:. --ts_proto_out=. --ts_proto_opt=esModuleInterop=true,useDate=string ./apipb/*.proto
+```

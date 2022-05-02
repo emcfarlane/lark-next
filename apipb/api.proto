@@ -1,0 +1,112 @@
+syntax = "proto3";
+
+package star.api;
+
+import "google/api/annotations.proto";
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/field_mask.proto";
+
+option go_package = "github.com/emcfarlane/larking/lark-next/apipb;apipb";
+
+service Tutorials {
+  // Get a tutorial.
+  rpc GetTutorial(GetTutorialRequest) returns (Tutorial) {
+    // Get maps to HTTP GET. Resource name is mapped to the URL. No body.
+    option (google.api.http) = {
+      get : "/v1/{name=tutorials/*}"
+    };
+  }
+
+  // Lists tutorials.
+  rpc ListTutorials(ListTutorialsRequest) returns (ListTutorialsResponse) {
+    // List method maps to HTTP GET.
+    option (google.api.http) = {
+      get : "/v1/tutorials"
+    };
+  }
+
+  // Creates a tutorial.
+  rpc CreateTutorial(CreateTutorialRequest) returns (Tutorial) {
+    // Body sets the field from the http body request.
+    option (google.api.http) = {
+      post : "/v1/tutorials"
+      body : "tutorial"
+    };
+  }
+
+  // Updates a tutorial.
+  rpc UpdateTutorial(UpdateTutorialRequest) returns (Tutorial) {
+    // Update maps to HTTP PATCH. Resource name is mapped to a URL path.
+    // Resource is contained in the HTTP request body.
+    option (google.api.http) = {
+      // Note the URL template variable which captures the resource name of the
+      // tutorial to update.
+      patch : "/v1/{tutorial.name=tutorials/*}"
+      body : "tutorial"
+    };
+  }
+
+  // Deletes a tutorial.
+  rpc DeleteTutorial(DeleteTutorialRequest) returns (google.protobuf.Empty) {
+    // Delete maps to HTTP DELETE. Resource name maps to the URL path.
+    // There is no request body.
+    option (google.api.http) = {
+      // Note the URL template variable capturing the multi-segment name of the
+      // tutorial resource to be deleted, such as "tutorials/tutorial2"
+      delete : "/v1/{name=tutorials/*}"
+    };
+  }
+}
+
+message Tutorial {
+  // Tutorial resource name.
+  string name = 1;
+  string title = 2;
+  string sub_title = 3;
+  string url = 4;
+  google.protobuf.Timestamp create_time = 5;
+}
+
+message GetTutorialRequest { string name = 1; }
+
+message ListTutorialsRequest {
+  // The maximum number of items to return.
+  int32 page_size = 1;
+
+  // The next_page_token value returned from a previous List request, if any.
+  bytes page_token = 2;
+}
+
+message ListTutorialsResponse {
+  // The field name should match the noun "tutorials" in the method name.  There
+  // will be a maximum number of items returned based on the page_size field
+  // in the request.
+  repeated Tutorial tutorials = 1;
+
+  // Token to retrieve the next page of results, or empty if there are no
+  // more results in the list.
+  bytes next_page_token = 2;
+}
+
+message CreateTutorialRequest {
+  // The tutorial resource to create.
+  // The field name should match the Noun in the method name.
+  Tutorial tutorial = 1;
+}
+
+message UpdateTutorialRequest {
+  // The tutorial resource which replaces the resource on the server.
+  Tutorial tutorial = 1;
+
+  // The update mask applies to the resource. For the `FieldMask` definition,
+  // see
+  // https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask
+  google.protobuf.FieldMask update_mask = 2;
+}
+
+message DeleteTutorialRequest {
+  // The resource name of the book to be deleted, for example:
+  // "tutorials/tutorial1"
+  string name = 1;
+}
