@@ -7,7 +7,6 @@ import (
 	"net"
 	"os"
 
-	"github.com/emcfarlane/lark-next/apipb"
 	"github.com/emcfarlane/lark-next/server"
 	"github.com/emcfarlane/larking"
 )
@@ -42,7 +41,7 @@ func run() error {
 	if err != nil {
 		return err
 	}
-	mux.RegisterService(&apipb.Tutorials_ServiceDesc, svr)
+	svr.RegisterServices(mux)
 
 	svrOpts := []larking.ServerOption{
 		larking.InsecureServerOption(),

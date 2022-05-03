@@ -41,7 +41,7 @@ func NewTutorialsClient(cc grpc.ClientConnInterface) TutorialsClient {
 
 func (c *tutorialsClient) GetTutorial(ctx context.Context, in *GetTutorialRequest, opts ...grpc.CallOption) (*Tutorial, error) {
 	out := new(Tutorial)
-	err := c.cc.Invoke(ctx, "/star.api.Tutorials/GetTutorial", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/api.Tutorials/GetTutorial", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -50,7 +50,7 @@ func (c *tutorialsClient) GetTutorial(ctx context.Context, in *GetTutorialReques
 
 func (c *tutorialsClient) ListTutorials(ctx context.Context, in *ListTutorialsRequest, opts ...grpc.CallOption) (*ListTutorialsResponse, error) {
 	out := new(ListTutorialsResponse)
-	err := c.cc.Invoke(ctx, "/star.api.Tutorials/ListTutorials", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/api.Tutorials/ListTutorials", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -59,7 +59,7 @@ func (c *tutorialsClient) ListTutorials(ctx context.Context, in *ListTutorialsRe
 
 func (c *tutorialsClient) CreateTutorial(ctx context.Context, in *CreateTutorialRequest, opts ...grpc.CallOption) (*Tutorial, error) {
 	out := new(Tutorial)
-	err := c.cc.Invoke(ctx, "/star.api.Tutorials/CreateTutorial", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/api.Tutorials/CreateTutorial", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -68,7 +68,7 @@ func (c *tutorialsClient) CreateTutorial(ctx context.Context, in *CreateTutorial
 
 func (c *tutorialsClient) UpdateTutorial(ctx context.Context, in *UpdateTutorialRequest, opts ...grpc.CallOption) (*Tutorial, error) {
 	out := new(Tutorial)
-	err := c.cc.Invoke(ctx, "/star.api.Tutorials/UpdateTutorial", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/api.Tutorials/UpdateTutorial", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -77,7 +77,7 @@ func (c *tutorialsClient) UpdateTutorial(ctx context.Context, in *UpdateTutorial
 
 func (c *tutorialsClient) DeleteTutorial(ctx context.Context, in *DeleteTutorialRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
 	out := new(emptypb.Empty)
-	err := c.cc.Invoke(ctx, "/star.api.Tutorials/DeleteTutorial", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/api.Tutorials/DeleteTutorial", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -143,7 +143,7 @@ func _Tutorials_GetTutorial_Handler(srv interface{}, ctx context.Context, dec fu
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/star.api.Tutorials/GetTutorial",
+		FullMethod: "/api.Tutorials/GetTutorial",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(TutorialsServer).GetTutorial(ctx, req.(*GetTutorialRequest))
@@ -161,7 +161,7 @@ func _Tutorials_ListTutorials_Handler(srv interface{}, ctx context.Context, dec 
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/star.api.Tutorials/ListTutorials",
+		FullMethod: "/api.Tutorials/ListTutorials",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(TutorialsServer).ListTutorials(ctx, req.(*ListTutorialsRequest))
@@ -179,7 +179,7 @@ func _Tutorials_CreateTutorial_Handler(srv interface{}, ctx context.Context, dec
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/star.api.Tutorials/CreateTutorial",
+		FullMethod: "/api.Tutorials/CreateTutorial",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(TutorialsServer).CreateTutorial(ctx, req.(*CreateTutorialRequest))
@@ -197,7 +197,7 @@ func _Tutorials_UpdateTutorial_Handler(srv interface{}, ctx context.Context, dec
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/star.api.Tutorials/UpdateTutorial",
+		FullMethod: "/api.Tutorials/UpdateTutorial",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(TutorialsServer).UpdateTutorial(ctx, req.(*UpdateTutorialRequest))
@@ -215,7 +215,7 @@ func _Tutorials_DeleteTutorial_Handler(srv interface{}, ctx context.Context, dec
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/star.api.Tutorials/DeleteTutorial",
+		FullMethod: "/api.Tutorials/DeleteTutorial",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(TutorialsServer).DeleteTutorial(ctx, req.(*DeleteTutorialRequest))
@@ -227,7 +227,7 @@ func _Tutorials_DeleteTutorial_Handler(srv interface{}, ctx context.Context, dec
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var Tutorials_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "star.api.Tutorials",
+	ServiceName: "api.Tutorials",
 	HandlerType: (*TutorialsServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{

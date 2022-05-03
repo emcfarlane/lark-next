@@ -7,7 +7,7 @@ import { BrowserHeaders } from "browser-headers";
 import { Timestamp } from "../google/protobuf/timestamp";
 import { FieldMask } from "../google/protobuf/field_mask";
 
-export const protobufPackage = "star.api";
+export const protobufPackage = "api";
 
 export interface Tutorial {
   /** Tutorial resource name. */
@@ -674,7 +674,7 @@ export class TutorialsClientImpl implements Tutorials {
 }
 
 export const TutorialsDesc = {
-  serviceName: "star.api.Tutorials",
+  serviceName: "api.Tutorials",
 };
 
 export const TutorialsGetTutorialDesc: UnaryMethodDefinitionish = {
