@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package star.api;
+package api;
 
 import "google/api/annotations.proto";
 import "google/protobuf/empty.proto";

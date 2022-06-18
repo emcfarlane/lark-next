@@ -22,13 +22,13 @@ type Tutorial struct {
 var (
 	tutorials = []Tutorial{{
 		ID:         "1",
-		Title:      "Larking Docs",
-		SubTitle:   "Get started with the larking.io documentation.",
+		Title:      "Larking.io",
+		SubTitle:   "Go libraries for backend services. Build ",
 		URL:        "http://larking.io/docs",
 		CreateTime: time.Now(),
 	}, {
 		ID:         "2",
-		Title:      "Next.js Docs",
+		Title:      "Next.js",
 		SubTitle:   "Get started with the next.js documentation.",
 		URL:        "https://nextjs.org/docs",
 		CreateTime: time.Now(),
@@ -46,7 +46,7 @@ func (s *Server) toTutorial(ctx context.Context, t *Tutorial) (*apipb.Tutorial, 
 	return &apipb.Tutorial{
 		Name:       "tutorials/" + t.ID,
 		Title:      t.Title,
-		SubTitle:   t.Title,
+		SubTitle:   t.SubTitle,
 		Url:        t.URL,
 		CreateTime: timestamppb.New(t.CreateTime),
 	}, nil
