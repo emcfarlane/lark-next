@@ -25,5 +25,5 @@ go run ./cmd/tutorial
 
 Generate protobuffers:
 ```
-protoc --go_out=paths=source_relative:. --go-grpc_out=paths=source_relative:. --ts_proto_out=. --ts_proto_opt=esModuleInterop=true,useDate=string ./apipb/*.proto
+protoc --go_out=paths=source_relative:. --go-grpc_out=paths=source_relative:. --ts_proto_out=outputClientImpl=grpc-web:. --ts_proto_opt=esModuleInterop=true,useDate=string ./apipb/*.proto
 ```
